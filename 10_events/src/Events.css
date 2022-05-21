@@ -1,0 +1,9 @@
+.bla {
+    background-color: red;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    width: 80px;
+    border: 2px solid green;
+    margin: auto;
+}

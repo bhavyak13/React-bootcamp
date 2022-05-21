@@ -1,0 +1,12 @@
+.Hello {
+    background: lightblue;
+    border: solid black 2px;
+}
+.win{
+    color:white;
+    background: green;
+}
+.lose{
+    color:white;
+    background: red;
+}

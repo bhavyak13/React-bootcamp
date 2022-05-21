@@ -1,0 +1,21 @@
+class Numpicker extends React.Component {
+    render() {
+        let num = randomNumber();
+        let msg = randomNumber();
+        return (
+            <div>
+                Your number is {msg}
+                <br/>
+                {msg === 7 ? 'Hayeee' : 'Byee'}
+            </div>
+        )
+    }
+}
+// ReactDOM.render(<Numpicker />, document.getElementById('num'));
+
+
+// arrow funcitons not acceptef in JSX?
+// const randomNumbe = () => (Math.floor(Math.random() * 10) + 1)
+function randomNumber() {
+    return Math.floor(Math.random() * 10) + 1;
+}

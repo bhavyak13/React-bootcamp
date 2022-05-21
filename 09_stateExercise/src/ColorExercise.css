@@ -1,0 +1,7 @@
+.Container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    padding:1%;
+    border:2px solid white;
+}
