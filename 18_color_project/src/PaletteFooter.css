@@ -1,0 +1,12 @@
+.footer{
+    display: flex;
+    justify-content: flex-end;
+    font-weight: bold;
+    margin-right: 1rem;
+    align-items: center;
+    /* height: 5vh; */
+}
+.emoji{
+    size: 1.5rem;
+    margin-left: 1rem;
+}
