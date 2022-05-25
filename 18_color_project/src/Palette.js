@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
-import './Palette.css'
 import PaletteFooter from './PaletteFooter';
+import useStyles from './Styles/PaletteStyles';
 
 function Palette(props) {
+    let classes = useStyles();
     const [level, setLevel] = useState(500);
     const [colorType, setColorType] = useState('hex')
     return (
-        <div className='Palette'>
+        <div className={classes.Palette}>
             <Navbar level={level} setLevel={setLevel} colorType={colorType} setColorType={setColorType} />
-            <div className='Palette-colors'>
+            <div className={classes.PaletteColors}>
                 {props.colors[level].map(color => (
                     <ColorBox
                         background={color[colorType]}

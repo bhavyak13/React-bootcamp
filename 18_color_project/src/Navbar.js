@@ -1,26 +1,34 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import './Navbar.css'
 import SelectColorType from './Select';
 import SimpleSnackbar from './SnackBar';
+import useStyles from './Styles/NavbarStyles';
 
 function Navbar(props) {
+    let classes = useStyles();
     let { level, setLevel, colorType, setColorType } = props;
     const [open, setOpen] = useState(false);
     return (
-        <header className='Navbar'>
-            <div className='logo'>
+        <header className={classes.Navbar}>
+            <div className={classes.logo}>
                 <Link to='/'>ReactColorProject</Link>
             </div>
             {props.isSliderVisible &&
                 (
-                    <div className='slider-container'>
+                    <div className={classes.sliderContainer}>
                         <span>Level: {level}</span>
-                        <input type='range' className='form-range slider' min='100' value={level} max='900' step='100' onChange={(e) => { setLevel(e.target.value) }} />
+                        <input
+                            type='range'
+                            className={`form-range ${classes.slider}`}
+                            min='100'
+                            value={level}
+                            max='900'
+                            step='100'
+                            onChange={(e) => { setLevel(e.target.value) }} />
                     </div>
                 )
             }
-            <div className="select-container">
+            <div className={classes.selectContainer}>
                 <SelectColorType colorType={colorType} setColorType={setColorType} setOpen={setOpen} />
             </div>
             <div>
@@ -29,7 +37,7 @@ function Navbar(props) {
         </header>
     )
 }
-Navbar.defaultProps={
-    isSliderVisible:true,
+Navbar.defaultProps = {
+    isSliderVisible: true,
 }
 export default Navbar;
