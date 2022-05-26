@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import MiniPaletteColors from './MiniPaletteColors';
 import useStyles from './Styles/MiniPaletteStyles';
 
@@ -22,7 +22,7 @@ function MiniPalette(props) {
     const classes = useStyles();
     const { id, emoji, paletteName, colors } = props;
     let navigate = useNavigate();
-    const clickHandler=()=>{
+    const clickHandler = () => {
         navigate(`palette/${id}`);
     }
     return (

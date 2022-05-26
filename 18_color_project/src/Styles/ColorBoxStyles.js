@@ -110,7 +110,6 @@ const useStyles = makeStyles({
         background: 'rgba(255, 255, 255, 0.3)',
         fontSize: '1rem',
         lineHeight: '30px',
-        color: 'white',
         textTransform: 'uppercase',
         border: 'none',
         opacity: '0',

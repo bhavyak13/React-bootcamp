@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom';
 import MiniPalette from './MiniPalette';
 import useStyles from './Styles/PaletteListStyles';
 
@@ -12,7 +13,7 @@ function PaletteList(props) {
 
                 <nav className={classes.nav}>
                     <h1>React Colors</h1>
-                    {/* Link */}
+                    <Link to='palette/new'>Create Palette</Link>
                 </nav>
 
                 <div className={classes.palettes}>
