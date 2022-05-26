@@ -4,15 +4,15 @@ import TextField from '@mui/material/TextField';
 
 
 function PaletteNameForm(props) {
-
+    //initials
     const { paletteName, setPaletteName } = props;
-    const [error, setError] = useState(false);
+    const {error, setError} = props;
     const [errorMessage, setErrorMessage] = useState('');
 
+    //handlers
     const changeHandler = e => {
         setPaletteName(e.target.value);
     }
-
     const submitHandler = (e) => {
         e.preventDefault();
         if (error) {
@@ -21,7 +21,9 @@ function PaletteNameForm(props) {
             //
         }
     }
+    
 
+    //useEffect Hook
     useEffect(() => {
         const isUniqueName = props.palette.every(c => (c.paletteName.toLowerCase() !== paletteName.toLowerCase()));
         if (paletteName === '') {
@@ -34,7 +36,9 @@ function PaletteNameForm(props) {
             setError(false);
             setErrorMessage('');
         }
-    }, [paletteName])
+    }, [paletteName,props.palette,setError])
+
+    //return
     return (
         < div >
             <Box

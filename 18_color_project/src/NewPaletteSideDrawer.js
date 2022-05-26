@@ -7,7 +7,9 @@ function SideDrawer(props) {
     const [color, setColor] = useState('#397FE6');
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const [name, setName] = useState('');
+    const [name, setName] = useState('Name');
+
+    //handlers
     const changeHandler = e => {
         setName(e.target.value);
     }
@@ -18,9 +20,25 @@ function SideDrawer(props) {
         } else {
             const newColor = { name, color }
             props.addColor(newColor);
-            setName('');
+            setName('Name');
         }
     }
+    const clickHandler = () => {
+        props.setColors([]);
+    }
+    const randomColor = () => {
+        const allColors = props.palette.map(p => p.colors).flat();
+        // console.log(allColors)
+
+        let newColor;
+        do {
+            let rand = Math.floor(Math.random() * allColors.length);
+            newColor = allColors[rand];
+        } while ((props.colors.includes(newColor)));
+        props.addColor(newColor);
+    }
+
+    //useEFfect hook
     useEffect(() => {
         const isUniqueName = props.colors.every(c => (c.name.toLowerCase() !== name.toLowerCase()));
         const isUnique = props.colors.every(c => (c.color.toLowerCase() !== color.toLowerCase()));
@@ -37,13 +55,21 @@ function SideDrawer(props) {
             setError(false);
             setErrorMessage('');
         }
-    }, [name, color])
+    }, [name, color, props.colors])
+
     return (
         <div>
             <h1>Design your Palette</h1>
             <div>
-                <button type="button" className="btn btn-primary">Clear palette</button>
-                <button type="button" className="btn btn-danger">Random color</button>
+                <button type="button" className="btn btn-primary" onClick={clickHandler}>Clear palette</button>
+                <button
+                    type="button"
+                    className="btn btn-danger"
+                    disabled={!props.addColorBtnActive}
+                    onClick={randomColor}
+                >
+                    Random color
+                </button>
             </div>
             <ColorPicker
                 color={color}
