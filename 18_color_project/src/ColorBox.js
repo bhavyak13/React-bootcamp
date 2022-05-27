@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useNavigate } from 'react-router-dom';
 import useStyles from './Styles/ColorBoxStyles';
+
 // ⚠️ @mui/styles is not compatible with React.StrictMode or React 18.
-
-
 
 function ColorBox(props) {
     const { background, name, paletteId, colorId } = props;
