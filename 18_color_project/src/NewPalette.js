@@ -10,18 +10,19 @@ import { Main, DrawerHeader, drawerWidth } from './NewPaletteHelpers'
 import DragableColorBoxList from './DragableColorBoxList';
 import { arrayMoveImmutable } from "array-move";
 import NewPaletteNavbar from './NewPaletteNavbar';
+import useStyles from './Styles/NewPaletteStyles';
+
 
 function NewPalette(props) {
     //initials
-
     const [open, setOpen] = useState(true);
-    const [colors, setColors] = useState([]);
     const [addColorBtnActive, setAddColorBtnActive] = useState(true);
-    
-    // const [colors, setColors] = useState(props.palette[0].colors);
+    const [colors, setColors] = useState(props.palette[0].colors);
+
+    // const [colors, setColors] = useState([]);
     // console.log(colors)
     // console.log(props.palette[0].colors)
-    
+
     //prebuilt with mui
     const handleDrawerClose = () => {
         setOpen(false);
@@ -56,8 +57,11 @@ function NewPalette(props) {
     };
 
     //return
+    const classes = useStyles(props);
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{
+            display: 'flex',
+        }}>
             <CssBaseline />
             <NewPaletteNavbar
                 colors={colors}
@@ -74,6 +78,7 @@ function NewPalette(props) {
                         boxSizing: 'border-box',
                     },
                 }}
+                className={classes.obj}
                 variant="persistent"
                 anchor="left"
                 open={open}
@@ -84,15 +89,22 @@ function NewPalette(props) {
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                <SideDrawer
-                    addColor={addColor}
-                    addColorBtnActive={addColorBtnActive}
-                    colors={colors}
-                    setColors={setColors}
-                    palette={props.palette}
-                />
+                <div
+                    className={classes.obj}
+                >
+                    <SideDrawer
+                        addColor={addColor}
+                        addColorBtnActive={addColorBtnActive}
+                        colors={colors}
+                        setColors={setColors}
+                        palette={props.palette}
+                    />
+                </div>
             </Drawer>
-            <Main open={open} style={{ height: "calc(100vh - 64px)" }}>
+            <Main
+                open={open}
+                style={{ height: "calc(100vh - 64px)" }}
+            >
                 <DrawerHeader />
                 <DragableColorBoxList
                     colors={colors}

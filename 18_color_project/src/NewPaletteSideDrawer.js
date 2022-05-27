@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import ColorPicker from './ColorPicker';
+import useStyle from './Styles/NewPaletteSideDrawer';
 
 function SideDrawer(props) {
+    const classes = useStyle(props);
     const [color, setColor] = useState('#397FE6');
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -58,32 +60,42 @@ function SideDrawer(props) {
     }, [name, color, props.colors])
 
     return (
-        <div>
+        <div className={classes.root}>
             <h1>Design your Palette</h1>
-            <div>
-                <button type="button" className="btn btn-primary" onClick={clickHandler}>Clear palette</button>
+            <div className={classes.buttons}>
+                <button type="button"
+                    className={`btn btn-primary ${classes.button}`}
+                    onClick={clickHandler}>
+                    Clear palette
+                </button>
                 <button
                     type="button"
-                    className="btn btn-danger"
+                    className={`btn btn-danger ${classes.button}`}
                     disabled={!props.addColorBtnActive}
                     onClick={randomColor}
                 >
                     Random color
                 </button>
             </div>
-            <ColorPicker
-                color={color}
-                setColor={setColor}
-            />
-            <div>
+
+
+            <div className={classes.picker}>
+                <ColorPicker
+                    color={color}
+                    setColor={setColor}
+                />
+                {/* </div> */}
+
+                {/* <div> */}
                 <Box
                     component="form"
                     sx={{
-                        '& .MuiTextField-root': { m: 1, width: '25ch' },
+                        '& .MuiTextField-root': { m: 1, width: '95%' },
                     }}
                     noValidate
                     autoComplete="off"
                     onSubmit={submitHandler}
+                    className={classes.colorNameInput}
                 >
                     <TextField
                         error={error}
@@ -95,9 +107,11 @@ function SideDrawer(props) {
                     />
                 </Box>
             </div>
+
             <button
                 style={{ backgroundColor: color }}
-                className='btn'
+                // className={`btn`}
+                className={`btn ${classes.addColor}`}
                 onClick={submitHandler}
                 disabled={!props.addColorBtnActive}
             >{props.addColorBtnActive ? 'Add Color' : 'Palette full'}</button>

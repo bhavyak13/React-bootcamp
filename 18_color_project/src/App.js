@@ -38,7 +38,7 @@ function SingleColorPaletteWrapper(props) {
 function App() {
   const [palette, setPalette] = useState(seedColors);
   const savePalette = (newPalette) => {
-    console.log(newPalette);
+    // console.log(newPalette);
     setPalette([...palette, newPalette])
   }
   return (
