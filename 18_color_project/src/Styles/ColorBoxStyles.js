@@ -1,5 +1,6 @@
 import { makeStyles } from '@mui/styles';
 import chroma from 'chroma-js'
+import Sizes from './Sizes';
 
 const useStyles = makeStyles({
     ColorBox: {
@@ -13,7 +14,19 @@ const useStyles = makeStyles({
         '&:hover button': {
             opacity: '1',
             transition: '0.5s',
-        }
+        },
+        [Sizes.down("lg")]: {
+            width: "25%",
+            height: props => ((props.height === '25%') ? "20%" : "33.3333%")
+        },
+        [Sizes.down("md")]: {
+            width: "50%",
+            height: props => ((props.height === '25%') ? "10%" : "20%")
+        },
+        [Sizes.down("xs")]: {
+            width: "100%",
+            height: props => ((props.height === '25%') ? "5%" : "10%")
+        },
     },
     boxContent: {
         position: "absolute",
@@ -67,6 +80,9 @@ const useStyles = makeStyles({
         "& p": {
             fontSize: "2rem",
             fontWeight: "100"
+        },
+        [Sizes.down("xs")]: {
+            fontSize: "6rem"
         }
     },
     showMessage: {
@@ -116,4 +132,5 @@ const useStyles = makeStyles({
         color: props => chroma(props.background).luminance() >= 0.7 ? 'black' : 'white'
     }
 })
+
 export default useStyles;

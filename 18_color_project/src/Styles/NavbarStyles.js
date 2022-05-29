@@ -1,4 +1,5 @@
 import { makeStyles } from "@mui/styles";
+import Sizes from "./Sizes";
 
 const useStyles = makeStyles({
     Navbar: {
@@ -19,13 +20,19 @@ const useStyles = makeStyles({
         '& a': {
             color: 'black',
             textDecoration: 'none',
-        }
+        },
+        [Sizes.down("xs")]: {
+            display: "none"
+        },
     },
     slider: {
         width: '340px',
         margin: '0 auto',
         display: 'inline-block',
         marginLeft: '1rem',
+        [Sizes.down("md")]: {
+            width: "150px"
+        }
     },
     sliderContainer: {
         display: 'flex',

@@ -8,8 +8,9 @@ const useStyles = makeStyles({
         padding: "0.5rem",
         position: "relative",
         overflow: "hidden",
-        "&:hover": {
-            cursor: "pointer"
+        cursor: "pointer",
+        "&:hover svg": {
+            opacity: 1
         }
     },
     title: {
@@ -25,6 +26,18 @@ const useStyles = makeStyles({
     emoji: {
         marginLeft: "0.5rem",
         fontSize: "1.5rem"
+    },
+    deleteIcon: {
+        width: "25px",
+        height: "20px",
+        color: "white",
+        backgroundColor: "#eb3d30",
+        position: "absolute",
+        right: "0px",
+        top: "0px",
+        // padding: "10px",
+        zIndex: 10,
+        opacity: '0',
     }
 })
 

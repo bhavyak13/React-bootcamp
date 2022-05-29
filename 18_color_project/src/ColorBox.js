@@ -17,7 +17,8 @@ function ColorBox(props) {
     const clickHandler = () => {
         navigate(`/palette/${paletteId}/${colorId}`);
     }
-    const classes = useStyles(props);
+    let obj = props;
+    const classes = useStyles(obj);
     return (
         <CopyToClipboard text={background} onCopy={() => { setCopied(true) }}>
             <div className={classes.ColorBox} style={{ backgroundColor: background }}>

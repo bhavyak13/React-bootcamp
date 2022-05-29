@@ -1,4 +1,5 @@
 import { makeStyles } from '@mui/styles';
+import Sizes from './Sizes';
 const useStyles = makeStyles({
     Palette: {
         height: '100vh',
@@ -16,7 +17,19 @@ const useStyles = makeStyles({
         position: 'relative',
         marginBottom: '-5.5px',
         height: '50%',
-        backgroundColor: 'black'
+        backgroundColor: 'black',
+        [Sizes.down("lg")]: {
+            width: "25%",
+            height: "33.3333%"
+        },
+        [Sizes.down("md")]: {
+            width: "50%",
+            height: "20%"
+        },
+        [Sizes.down("xs")]: {
+            width: "100%",
+            height: "10%"
+        }
     },
     goBackButton: {
         width: '100px',
