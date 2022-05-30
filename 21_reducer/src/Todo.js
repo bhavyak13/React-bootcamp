@@ -1,4 +1,4 @@
-import React, { useContext} from 'react'
+import React, { useContext, memo } from 'react'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -7,13 +7,13 @@ import { Paper } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import EditFormDialog from './TodoEditFormDailog';
-import { TodosContext } from './Contexts/TodosContext';
+import { dispatchContext } from './Contexts/TodosContext';
 
 function Todo(props) {
     const classes = useStyles();
     const { todo } = props;
     const { task, id, completed } = todo;
-    const { dispatch } = useContext(TodosContext);
+    const dispatch = useContext(dispatchContext);
 
     const deleteHandler = () => {
         dispatch({ type: 'delete', id })
@@ -51,4 +51,4 @@ function Todo(props) {
         </div>
     )
 }
-export default Todo;
+export default memo(Todo);

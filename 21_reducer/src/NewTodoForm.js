@@ -2,13 +2,13 @@ import React, { useContext, useState } from 'react';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import useStyles from './Styles/NewTodoStyles';
-import { TodosContext } from './Contexts/TodosContext';
+import { dispatchContext } from './Contexts/TodosContext';
 
 export default function NewTodoForm() {
     //hooks
     const classes = useStyles();
     const [task, setTask] = useState('');
-    const { dispatch } = useContext(TodosContext);
+    const dispatch = useContext(dispatchContext);
 
     //handlers
     const changeHandler = (e) => {

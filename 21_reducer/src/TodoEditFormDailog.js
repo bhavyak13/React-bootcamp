@@ -6,13 +6,13 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { TodosContext } from './Contexts/TodosContext';
+import { dispatchContext } from './Contexts/TodosContext';
 
 export default function EditFormDialog(props) {
     const { todo } = props;
     const { id, completed, edit } = todo;
     const [task, setTask] = useState(todo.task);
-    const { dispatch } = useContext(TodosContext);
+    const dispatch = useContext(dispatchContext);
 
     //handlers
     const handleClose = () => {
