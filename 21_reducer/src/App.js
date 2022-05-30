@@ -1,10 +1,12 @@
 import React from 'react'
-import TodoApp from './TodoApp';
+import Counter from './ReducerBasicExamples/Counter';
+// import TodoApp from './TodoApp';
 
 function App() {
   return (
     <div >
-      <TodoApp />
+      {/* <TodoApp /> */}
+      <Counter/>  
     </div>
   );
 }
