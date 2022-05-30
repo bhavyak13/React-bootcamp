@@ -2,18 +2,21 @@ import React, { useContext, useState } from 'react';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import useStyles from './Styles/NewTodoStyles';
-import { TodoHelpersContext } from './Contexts/TodoHelpersContext';
+import { TodosContext } from './Contexts/TodosContext';
 
 export default function NewTodoForm() {
+    //hooks
     const classes = useStyles();
     const [task, setTask] = useState('');
-    const { createNewTodo } = useContext(TodoHelpersContext);
+    const { dispatch } = useContext(TodosContext);
+
+    //handlers
     const changeHandler = (e) => {
         setTask(e.target.value);
     }
     const submitHandler = (e) => {
         e.preventDefault();
-        createNewTodo(task);
+        dispatch({ type: 'add', task });
         setTask('');
     }
 

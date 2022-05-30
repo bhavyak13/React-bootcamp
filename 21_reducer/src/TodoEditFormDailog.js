@@ -6,17 +6,17 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { TodoHelpersContext } from './Contexts/TodoHelpersContext';
+import { TodosContext } from './Contexts/TodosContext';
 
 export default function EditFormDialog(props) {
     const { todo } = props;
     const { id, completed, edit } = todo;
     const [task, setTask] = useState(todo.task);
-    const { toggleEditForm, saveEditedTask } = useContext(TodoHelpersContext)
+    const { dispatch } = useContext(TodosContext);
 
     //handlers
     const handleClose = () => {
-        toggleEditForm(id);
+        dispatch({ type: 'toggleEditForm', id })
     };
     const saveEditedTodo = () => {
         handleClose();
@@ -25,12 +25,12 @@ export default function EditFormDialog(props) {
             id: id,
             completed: completed,
         }
-        saveEditedTask(newTodo);
+        dispatch({ type: 'saveEditedTodo', newTodo })
     }
     const changeHandler = (e) => {
         setTask(e.target.value)
     }
-    const submitHandler=e=>{
+    const submitHandler = e => {
         e.preventDefault();
         saveEditedTodo();
     }

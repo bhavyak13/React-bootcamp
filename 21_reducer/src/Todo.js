@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext} from 'react'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -6,23 +6,23 @@ import useStyles from './Styles/TodoStyles';
 import { Paper } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { TodoHelpersContext } from './Contexts/TodoHelpersContext';
 import EditFormDialog from './TodoEditFormDailog';
+import { TodosContext } from './Contexts/TodosContext';
 
 function Todo(props) {
     const classes = useStyles();
     const { todo } = props;
     const { task, id, completed } = todo;
-    const { deleteTodo, toggleCompletion, toggleEditForm } = useContext(TodoHelpersContext);
+    const { dispatch } = useContext(TodosContext);
 
     const deleteHandler = () => {
-        deleteTodo(id);
+        dispatch({ type: 'delete', id })
     }
     const toggleHandler = () => {
-        toggleCompletion(id);
+        dispatch({ type: 'toggleCompletion', id });
     }
     const handleClickOpen = () => {
-        toggleEditForm(id);
+        dispatch({ type: 'toggleEditForm', id })
     };
     return (
         <div>

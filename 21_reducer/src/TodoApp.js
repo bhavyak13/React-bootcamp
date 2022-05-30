@@ -1,5 +1,4 @@
 import React from 'react'
-import { TodoHelpersProvider } from './Contexts/TodoHelpersContext';
 import { TodosProvider } from './Contexts/TodosContext';
 import Navbar from './Navbar';
 import NewTodoForm from './NewTodoForm';
@@ -10,10 +9,8 @@ function TodoApp() {
         <div>
             <Navbar />
             <TodosProvider>
-                <TodoHelpersProvider>
-                    <NewTodoForm />
-                    <TodoList />
-                </TodoHelpersProvider>
+                <NewTodoForm />
+                <TodoList />
             </TodosProvider>
         </div>
     )
